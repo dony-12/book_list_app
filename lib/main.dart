@@ -1,3 +1,4 @@
+import 'package:book_library_app/pages/book_details.dart';
 import 'package:book_library_app/pages/bookmarks.dart';
 import 'package:book_library_app/pages/favourites.dart';
 import 'package:book_library_app/pages/home.dart';
@@ -21,6 +22,13 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 1, 34, 86)),
         useMaterial3: true,
       ),
+      initialRoute: '/',
+      routes: {
+        "/home": ((context) => const Home()),
+        "/bookmarks": ((context) => const Bookmarks()),
+        "/favourites": ((context) => const Favourites()),
+        "/details": ((context) => const BookDetails()),
+      },
       home: const HomePage(title: 'Book Library Home Page'),
     );
   }
