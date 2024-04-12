@@ -82,23 +82,6 @@ class _BookDetailsState extends State<BookDetails> {
                           label: const Text("Bookmark")),
                     )
                   : const SizedBox(),
-              !isBookmarked
-                  ? Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: ElevatedButton.icon(
-                          onPressed: () async {
-                            await DatabaseHelper.instance.toggleFavouriteStatus(
-                                book.id, !book.isFavorite);
-                            SnackBar snackBar = const SnackBar(
-                                content: Text("Book added to Favourites"));
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                            setState(() {});
-                          },
-                          icon: const Icon(Icons.favorite_border),
-                          label: const Text("Favourite")),
-                    )
-                  : const SizedBox()
             ],
           ),
           const SizedBox(

@@ -97,23 +97,25 @@ class _BookmarksState extends State<Bookmarks> {
                                                   color: Color.fromARGB(
                                                       255, 241, 6, 6))),
                                         )),
-                                    !book.isFavorite
-                                        ? Padding(
-                                            padding: const EdgeInsets.all(1.0),
-                                            child: ElevatedButton(
-                                              onPressed: () async {
-                                                await DatabaseHelper.instance
-                                                    .toggleFavouriteStatus(
-                                                        book.id,
-                                                        !book.isFavorite)
-                                                    .then((value) => print(
-                                                        "Added to favourites $value"));
-                                                setState(() {});
-                                              },
-                                              child: const Icon(
-                                                  Icons.favorite_border),
-                                            ))
-                                        : const SizedBox(),
+                                    Padding(
+                                        padding: const EdgeInsets.all(1.0),
+                                        child: ElevatedButton(
+                                          onPressed: () async {
+                                            await DatabaseHelper.instance
+                                                .toggleFavouriteStatus(
+                                                    book.id, !book.isFavorite)
+                                                .then((value) => print(
+                                                    "Added to favourites $value"));
+                                            setState(() {});
+                                          },
+                                          child: !book.isFavorite
+                                              ? const Icon(
+                                                  Icons.favorite_border)
+                                              : const Icon(
+                                                  Icons.favorite,
+                                                  color: Colors.red,
+                                                ),
+                                        )),
                                   ],
                                 ),
                               ],
